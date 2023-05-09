@@ -1,0 +1,13 @@
+# DO NOT EDIT THIS LINE
+file-version: 3
+# DO NOT EDIT THIS LINE
+
+default-language: EN
+
+languages:
+  "FR": "fr_FR"
+  "EN": "en_EN"
+
+languages-name:
+  "FR": "Français"
+  "EN": "English"

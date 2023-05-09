@@ -1,0 +1,230 @@
+---
+ #
+ #      ______           __  _                __  ___           __
+ #     / ____/___ ______/ /_(_)___  ____     /  |/  /___ ______/ /____  _____
+ #    / /_  / __ `/ ___/ __/ / __ \/ __ \   / /|_/ / __ `/ ___/ __/ _ \/ ___/
+ #   / __/ / /_/ / /__/ /_/ / /_/ / / / /  / /  / / /_/ (__  ) /_/  __/ /  
+ #  /_/    \__,_/\___/\__/_/\____/_/ /_/  /_/  /_/\__,_/____/\__/\___/_/ 
+ #
+ # FactionMaster - A Faction plugin for PocketMine-MP
+ # This file is part of FactionMaster
+ # 
+ # This program is free software: you can redistribute it and/or modify
+ # it under the terms of the GNU Lesser General Public License as published by
+ # the Free Software Foundation, either version 3 of the License, or
+ # (at your option) any later version.
+ #
+ # This program is distributed in the hope that it will be useful,
+ # but WITHOUT ANY WARRANTY; without even the implied warranty of
+ # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ # GNU Lesser General Public License for more details.
+ #
+ # You should have received a copy of the GNU Lesser General Public License
+ # along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ #
+ # @author ShockedPlot7560 
+ # @link https://github.com/ShockedPlot7560
+ #
+
+# DO NOT EDIT THIS VALUE. ONLY FOR INTERNAL USE.
+file-version: 15
+# DO NOT EDIT THIS VALUE. ONLY FOR INTERNAL USE.
+
+# --------------------- DATABASE --------------------------
+
+# Use only SQLITE or MYSQL
+#
+# To enabled Multiple server support
+# please use MYSQL for PROVIDER, give the good information and restart the server
+PROVIDER: "SQLITE"
+MYSQL_database:
+  host: "localhost"
+  name: "FactionMaster"
+  user: "root"
+  pass: ""
+SQLITE_database: 
+  name: "FactionMasterv3"
+
+# --------------------- GLOBAL CONFIGURATION --------------------------
+
+# low mode
+low-mode: false
+
+# If you want to disable this feature, empty this array and reload your server
+banned-faction-name: ["op", "staff", "admin", "fuck", "shit"]
+
+xp-win-per-kill: 0.1
+power-win-per-kill: 1
+power-loose-per-death: 0.5
+#Use to multiply the power win and loose if players are in factions
+faction-multiplicator: 2
+#check if player have armor equip
+allow-no-stuff: false
+
+# These parameters are used to define a cooldown between two power additions.
+# If someone kills a player of another faction, 
+# he will have to wait x seconds to get power again.
+#
+# cooldown between two power losses when killed
+victim-cooldown: 0
+# cooldown between two power gains when killing a player
+killer-cooldown: 0
+
+# Defines if a faction gains power by having an online member or not.
+online-leader: true
+# time in seconds, set to 0 if you need to disable the option
+power-staying-online-time: 900
+# number of power gained every x seconds (defined by the line above)
+power-staying-online-number: 1
+
+default-home-limit: 1
+default-claim-limit: 200
+default-player-limit: 50
+default-ally-limit: 2
+# PUBLIC: 0  /  PRIVATE: 1  /  INVITATION: 2
+default-faction-visibility: 0
+default-faction-xp: 0
+default-faction-level: 1
+default-faction-description: ""
+default-faction-message: ""
+default-power: 10
+
+min-faction-name-length: 3
+max-faction-name-length: 20
+
+# If it set to true, image will be display near button
+# If it set to false, image will be disabled
+active-image: null
+# If you want to keep using the old system by paste your zip in resource_pack folder of the server, fill it to null
+# else, give the path to the zip like this : resource_pack/path/to/your
+resource-pack-path: null 
+
+faction-chat-active: false
+faction-chat-symbol: "$"
+faction-chat-message: "[{factionName}] {playerName}: {message}"
+ally-chat-active: false
+ally-chat-symbol: "%"
+ally-chat-message: "[{factionName}] {playerName}: {message}"
+
+help-command-header: "§8=§7=§8=§7=§8=§7=§8=§7=§8=§7= Pays command §8=§7=§8=§7=§8=§7=§8=§7=§8=§7="
+help-command-lign: " §8>> §r§b{command}: §7{description}"
+
+# ------------------ BROADCAST MESSAGE CONFIGURATION ---------------------
+
+broadcast-faction-create: true
+broadcast-faction-create-message: "{playerName} a crée le pays: {factionName} !"
+broadcast-faction-delete: false
+broadcast-faction-delete-message: "{factionName} a été disband."
+broadcast-faction-transferProperty: false
+broadcast-faction-transferProperty-message: "{playerName} transferred the property to {targetName} of the faction {factionName}"
+
+# --------------------- F MAP CONFIGURATION -------------------------
+
+# Set thiis value to false if you want to disable /f map on | /f map off
+# Otherwise set this value to the number of ticks between each display 
+f-map-task: false
+#f-map-task: 40
+
+available-symbol: ["/", "\\", "#", "$", "?", "%", "=", "&", "^", "$"]
+
+player-symbol: "+"
+player-color: "§b"
+
+wilderness-symbol: "-"
+wilderness-color: "§7" 
+spawn-symbol: "-"
+spawn-color: "§8" 
+warzone-symbol: "-"
+warzone-color: "§7" 
+
+claim-color: "§f"
+claim-ally-color: "§e"
+claim-ennemie-color: "§4"
+claim-own-color: "§b"
+
+compass-color: "§c"
+compass-color-actual: "§e"
+
+map-width: 48
+map-height: 10
+map-header-color: "§6"
+map-middle-header: ".[ §2({{x}},{{z}}) {{factionLabel}} {{headerColor}}]."
+
+# --------------------- CLAIM CONFIGURATION --------------------------
+
+claim-cost:
+  # the type is the same type as level reward, you can put :
+  #   power / allyLimit / claimLimit / homeLimit / memberLimit
+  #   to make your own reward, please read the documentation
+  type: "power"
+  # the start value for the first claim
+  value: 1
+
+# flat: cost all the time, the same price
+# addition: first claim will be cost: Ex: 100
+#      second claim will be cost: Ex: 200
+#      second claim will be cost: Ex: 300
+# multiplication: will be times by a factor
+# decrease: descrease the start value by the factor
+claim-provider: "flat"
+# Equation for mutliplication :
+#   cost-price = cost-start * (factor ** number-claim)
+multiplication-factor: 2
+#Equation for decrease
+#   cost-price = cost-start - (number-claim * decrease-factor)
+decrease-factor: 100
+
+# If set to false, the player cant /f sethome in a ennemy claim
+allow-home-ennemy-claim: true
+
+# --------------------- TITLE CONFIGURATION --------------------------
+
+# Set this to true if you want to display on player's screen the message when entering a claim
+message-alert: true
+# The following line define which message will be print
+# on the screen of players when entering a claim chunk
+# active parameter which can set : {factionName} / {colorStatus} / {x} / {z} / {world}
+# - colorStatus : color set in the f map configuration
+# to purpose a suggestion, open an issue on our github
+message-alert-title: "Territoire ennemi"
+message-alert-subtitle: "{colorStatus}{factionName}"
+# Defines the time that will be applied before the message is displayed again
+message-alert-cooldown: 4
+
+message-alert-flag-enabled: false
+# -------------- TOP FACTION'S SCOREBOARD CONFIGURATION -----------------
+
+leaderboard-menu-limit: 10
+
+# This is the scoreboard header, display on the top for the factionLevel top
+factionLevel-leaderboard-header: "- Top 10 des Pays -"
+# Lign patern for each faction
+# you can use this parameter : 
+# {factionName} / {level} / {power}
+# to purpose a parameter suggestion, please open an issue on github
+factionLevel-leaderboard-body: "{factionName}: Level {level}"
+
+# This is the scoreboard header, display on the top for the factionPower top
+factionPower-leaderboard-header: "- Top 10 des Pays -"
+# Lign patern for each faction
+# you can use this parameter : 
+# {factionName} / {level} / {power}
+# to purpose a parameter suggestion, please open an issue on github
+factionPower-leaderboard-body: "{factionName}: Power {power}"
+
+# --------------------- PLUGIN CONFIGURATION --------------------------
+#       DONT CHANGE IF YOU DONT KNOW WHAT YOU ARE DOING
+
+# Change this value only if you are sure of what you are doing, 
+# reducing it may break some functionality of the plugin, 
+# increasing it may reduce the players experience.
+# Default: 60
+timeout-task: 60
+
+# Change this value only if you are sure of what you are doing, 
+# reducing it may break some functionality of the plugin, 
+# increasing it may reduce the players experience.
+# Default: 200
+# It will determine ow much time Database synchronisation will be done
+sync-time: 200
+...
