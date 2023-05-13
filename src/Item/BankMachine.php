@@ -48,7 +48,7 @@ class BankMachine extends Item implements ItemComponents
         @imagedestroy($img);
         $modelPath = FactionMaster::getInstance()->getDataFolder() . "entities/bank.json";
         $skin = new Skin("Bank", $skinBytes, "entities/bank.json", file_get_contents($modelPath));
-    $entity = new BankEntity(new Location($blockClicked->getPosition()->getX(), $blockClicked->getPosition()->getY(),
+        $entity = new BankEntity(new Location($blockClicked->getPosition()->getX(), $blockClicked->getPosition()->getY(),
         $blockClicked->getPosition()->getZ(), $player->getWorld(), -$player->getLocation()->getYaw(), 0), $skin);
         $entity->spawnToAll();
         return ItemUseResult::SUCCESS();
