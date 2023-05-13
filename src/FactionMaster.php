@@ -32,12 +32,19 @@
 
 namespace ShockedPlot7560\FactionMaster;
 
+use pocketmine\entity\Entity;
+use pocketmine\entity\EntityDataHelper;
+use pocketmine\entity\EntityFactory;
+use pocketmine\entity\Human;
 use pocketmine\event\Listener;
+use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\plugin\Plugin;
 use pocketmine\plugin\PluginBase;
+use pocketmine\world\World;
 use ShockedPlot7560\FactionMaster\API\MainAPI;
 use ShockedPlot7560\FactionMaster\Button\Collection\CollectionFactory;
 use ShockedPlot7560\FactionMaster\Command\FactionCommand;
+use ShockedPlot7560\FactionMaster\Entity\BankEntity;
 use ShockedPlot7560\FactionMaster\libs\CortexPE\Commando\PacketHooker;
 use ShockedPlot7560\FactionMaster\libs\JackMD\UpdateNotifier\UpdateNotifier;
 use ShockedPlot7560\FactionMaster\Listener\BroadcastMessageListener;
@@ -143,6 +150,10 @@ class FactionMaster extends PluginBase implements Listener {
 			}
 			MigrationManager::updateConfigDb();
             ItemManager::init();
+
+            EntityFactory::getInstance()->register(BankEntity::class, static function (World $world, CompoundTag $nbt): Entity {
+                return new BankEntity(EntityDataHelper::parseLocation($nbt, $world), Human::parseSkinNBT($nbt), $nbt);
+            }, ["factionmaster:bank"]);
 		}
 	}
 
