@@ -1,0 +1,53 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:geometry": [
+		{
+			"description": {
+				"identifier": "geometry.unknown",
+				"texture_width": 128,
+				"texture_height": 128,
+				"visible_bounds_width": 2,
+				"visible_bounds_height": 3.5,
+				"visible_bounds_offset": [0, 1.25, 0]
+			},
+			"bones": [
+				{
+					"name": "ATM",
+					"pivot": [0, 0, 0]
+				},
+				{
+					"name": "principal",
+					"parent": "ATM",
+					"pivot": [0, 0, 0],
+					"cubes": [
+						{"origin": [-7, 0, -7], "size": [14, 16, 14], "uv": [0, 0]},
+						{"origin": [6, 0, -2], "size": [2, 29, 8], "uv": [20, 50]},
+						{"origin": [-8, 0, -2], "size": [2, 29, 8], "uv": [0, 50]},
+						{"origin": [-7, 16, 1], "size": [14, 14, 6], "uv": [0, 30]},
+						{"origin": [-6, 31, 3], "size": [12, 4, 2], "uv": [42, 0]},
+						{"origin": [3, 30, 3], "size": [2, 1, 2], "uv": [0, 3]},
+						{"origin": [-5, 30, 3], "size": [2, 1, 2], "uv": [0, 0]}
+					]
+				},
+				{
+					"name": "bone",
+					"parent": "principal",
+					"pivot": [0, 14, -8],
+					"rotation": [40, 0, 0],
+					"cubes": [
+						{"origin": [-6, 10.8893, -7.94838], "size": [12, 4, 2], "uv": [42, 6]}
+					]
+				},
+				{
+					"name": "ecran",
+					"parent": "ATM",
+					"pivot": [0, 23, -4.5],
+					"rotation": [-27.5, 0, 0],
+					"cubes": [
+						{"origin": [-6, 15.74869, -2.85368], "size": [12, 16, 6], "uv": [40, 30]}
+					]
+				}
+			]
+		}
+	]
+}
